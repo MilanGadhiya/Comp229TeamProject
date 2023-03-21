@@ -19,10 +19,11 @@ export class SurveyService {
   }
 
   readSurveys(){
-    return this.http.post(this.baseuri+'/read', {headers: this.headers});
+    return this.http.get(this.baseuri+'/read', {headers: this.headers});
   }
 
-  updateSurvey(survey:Survey){
+  updateSurvey(){
+    console.log('gggggg');
     return this.http.put(this.baseuri+'/update', {headers: this.headers});
   }
 

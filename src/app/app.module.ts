@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 
 const appRoutes:Routes=[
   {path:'', component:ListSurveyComponent},
-  {path:'createUpdateComponent', component:CreateUpdateComponent}
+  {path:'createUpdate', component:CreateUpdateComponent}
 ]
 @NgModule({
   declarations: [

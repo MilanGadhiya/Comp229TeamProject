@@ -1,4 +1,4 @@
-<div class="card mt-5">
+<div class="card" style="margin-top: 90px;">
     <div class="card-body">
         <h4 class="card-title"> Surveys </h4>
         <table class="table table-hover">
@@ -31,8 +31,13 @@
                     <td>{{survey.province}}</td>
                     <td>{{survey.country}}</td>
                     <td>{{survey.coronaAffected}}</td>
-                    <td> <button class="btn btn-danger" (click)="doDelete(survey)">Delete</button> 
-                        <button class="btn btn-primary" (click)="doUpdate(survey)">Update</button>
+                    <td>
+                        <a class="btn border-shadow" (click)="doUpdate(survey)">
+                            <span><i class="fas fa-pencil-alt"></i></span>
+                        </a>
+                        <a class="btn border-shadow" (click)="doDelete(survey)" >
+                            <span><i class="fas fa-trash"></i></span>
+                        </a>
                     </td>
                 </tr>
             </tbody>

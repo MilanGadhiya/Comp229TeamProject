@@ -7,9 +7,10 @@ router.get('/read', async(req, res) => {
         const surveys = await Survey.find({ });
         res.send(surveys);
         console.log(surveys);
-      } catch (err) {
+    } 
+    catch (err) {
         console.log(err);
-      }
+    }
 });
 
 router.post('/create', async (req, res, next) => {
@@ -30,25 +31,35 @@ router.post('/create', async (req, res, next) => {
     console.log(result);
 });
 
-router.put('/update', (req, res, next) => {
-    Country.findById(req.body._id, async (err, survey) => {
-        if(err)
-            res.status(500).json({errmsg:err});
 
-        survey.name = req.body.name,
-        survey.email = req.body.email,
-        survey.gender = req.body.gender,
-        survey.age = req.body.age,
-        survey.address = req.body.address,
-        survey.city = req.body.city,
-        survey.zip = req.body.zip,
-        survey.province = req.body.province,
-        survey.country = req.body.country,
-        survey.coronaAffected = req.body.coronaAffected
+router.put('/update',(req, res, next) => {
 
-        const result = await survey.save()
-        console.log(result);
-    })
+    try {
+        const id = req.params.id;
+        const survey = Survey.findById(id);
+        if (!survey) {
+            return next(new Error('Could not load the document'));
+        } else {
+           
+            console.log('inside....');
+            survey.name = req.body.name,
+            survey.email = req.body.email,
+            survey.gender = req.body.gender,
+            survey.age = req.body.age,
+            survey.address = req.body.address,
+            survey.city = req.body.city,
+            survey.zip = req.body.zip,
+            survey.province = req.body.province,
+            survey.country = req.body.country,
+            survey.coronaAffected = req.body.coronaAffected
+
+            const result = survey.save();
+            console.log(result);
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
 });
 
 router.delete('/delete/:id', (req, res, next) => {
@@ -59,13 +70,13 @@ router.delete('/delete/:id', (req, res, next) => {
             res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
         }else{
             res.send({
-                message : "Contact was deleted successfully!"
+                message : "Survey was deleted successfully!"
             })
         }
     })
     .catch(err =>{
         res.status(500).send({
-            message: "Could not delete Contact with id=" + id
+            message: "Could not delete Survey with id=" + id
         });
     });
 });
