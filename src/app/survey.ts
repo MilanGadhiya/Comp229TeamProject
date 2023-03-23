@@ -6,7 +6,7 @@ export class Survey {
     public age!: string;
     public address!: number;
     public city!: string;
-    public zip!: number;
+    public zip!: string;
     public province!: string;
     public country!: string;
     public coronaAffected!: boolean;

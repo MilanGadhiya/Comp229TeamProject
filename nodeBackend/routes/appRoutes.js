@@ -32,11 +32,11 @@ router.post('/create', async (req, res, next) => {
 });
 
 
-router.put('/update',(req, res, next) => {
+router.put('/update', async (req, res, next) => {
 
     try {
         const id = req.params.id;
-        const survey = Survey.findById(id);
+        const survey = Survey.findByIdAndUpdate(id);
         if (!survey) {
             return next(new Error('Could not load the document'));
         } else {
@@ -53,7 +53,7 @@ router.put('/update',(req, res, next) => {
             survey.country = req.body.country,
             survey.coronaAffected = req.body.coronaAffected
 
-            const result = survey.save();
+            const result = await survey.save();
             console.log(result);
         }
     }
