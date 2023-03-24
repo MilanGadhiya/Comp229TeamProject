@@ -22,9 +22,9 @@ export class SurveyService {
     return this.http.get(this.baseuri+'/read', {headers: this.headers});
   }
 
-  updateSurvey(){
+  updateSurvey(id:string,body:any){
     console.log('gggggg');
-    return this.http.put(this.baseuri+'/update', {headers: this.headers});
+    return this.http.put(this.baseuri+'/update/'+id,body, {headers: this.headers});
   }
 
   deleteSurvey(id:string){

@@ -32,7 +32,7 @@ export class CreateUpdateComponent implements OnInit {
         }
       )
     } else {
-      this.surveyService.updateSurvey()
+      this.surveyService.updateSurvey(this.survey._id,this.survey)
       .subscribe(
         data => {
           console.log("dssssdsd");

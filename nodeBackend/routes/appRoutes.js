@@ -32,29 +32,34 @@ router.post('/create', async (req, res, next) => {
 });
 
 
-router.put('/update', async (req, res, next) => {
+router.put('/update/:id', async (req, res, next) => {
 
     try {
         const id = req.params.id;
-        const survey = Survey.findByIdAndUpdate(id);
+        console.log("params ============ ",req.params);
+        let survey = Survey.findById(id);
+        
         if (!survey) {
             return next(new Error('Could not load the document'));
         } else {
            
-            console.log('inside....');
-            survey.name = req.body.name,
-            survey.email = req.body.email,
-            survey.gender = req.body.gender,
-            survey.age = req.body.age,
-            survey.address = req.body.address,
-            survey.city = req.body.city,
-            survey.zip = req.body.zip,
-            survey.province = req.body.province,
-            survey.country = req.body.country,
-            survey.coronaAffected = req.body.coronaAffected
+            console.log('inside....',req.body);
+            // survey.name = req.body.name,
+            // survey.email = req.body.email,
+            // survey.gender = req.body.gender,
+            // survey.age = req.body.age,
+            // survey.address = req.body.address,
+            // survey.city = req.body.city,
+            // survey.zip = req.body.zip,
+            // survey.province = req.body.province,
+            // survey.country = req.body.country,
+            // survey.coronaAffected = req.body.coronaAffected
 
-            const result = await survey.save();
-            console.log(result);
+            survey = await Survey.findByIdAndUpdate(id,req.body);
+            // const result = await survey.save();
+            // console.log(result);
+
+            res.send({message:"updated",survey})
         }
     }
     catch (err) {
