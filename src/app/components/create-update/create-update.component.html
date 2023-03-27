@@ -1,0 +1,72 @@
+<form (ngSubmit)="createOrUpdate()" style="margin-top: 160px; margin-bottom: 90px; background-color: #212529; padding: 30px; color: aliceblue; border-radius: 15px; opacity: 0.8; font-weight: bolder;" ngNativeValidate>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" [(ngModel)]="survey.name" class="form-control mt-2" required placeholder="Enter Name">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" [(ngModel)]="survey.email" class="form-control mt-2" required placeholder="Enter Email">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group mt-2">
+                <label for="gender">Gender</label>
+                <input type="text" name="gender" [(ngModel)]="survey.gender" class="form-control mt-2" required placeholder="Enter Gender">
+                <small id="emailHelp" class="form-text text-muted">Enter male/female</small>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group mt-2">
+                <label for="age">Age</label>
+                <input type="number" name="age" [(ngModel)]="survey.age" class="form-control mt-2" required placeholder="Enter Age">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group mt-2">
+                <label for="CoronaAffected">CoronaAffected</label>
+                <input type="text" name="CoronaAffected" [(ngModel)]="survey.coronaAffected" class="form-control mt-2" required placeholder="Corona Affected">
+                <small id="emailHelp" class="form-text text-muted">Enter true/false</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group mt-2">
+        <label for="address">Address</label>
+        <input type="text" name="address" [(ngModel)]="survey.address" class="form-control mt-2" required placeholder="Enter Address">
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group mt-2">
+                <label for="city">City</label>
+                <input type="text" name="city" [(ngModel)]="survey.city" class="form-control mt-2" required placeholder="Enter City">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group mt-2">
+                <label for="zip">Zip</label>
+                <input type="text" name="zip" [(ngModel)]="survey.zip" class="form-control mt-2" required placeholder="Enter Zip">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group mt-2">
+                <label for="province">Province</label>
+                <input type="text" name="province" [(ngModel)]="survey.province" class="form-control mt-2" required placeholder="Enter Province">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group mt-2">
+                <label for="country">Country</label>
+                <input type="text" name="country" [(ngModel)]="survey.country" class="form-control mt-2" required placeholder="Enter Country">
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+       <input type="submit" value="Submit" class="btn btn-success mt-5" style="color: aliceblue; font-weight: bolder;">
+
+    </div>
+</form>
