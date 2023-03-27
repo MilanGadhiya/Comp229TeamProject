@@ -1,0 +1,46 @@
+<div style="margin-top: 90px;">
+    <div>
+        <h4 class="card-title text-center" style="font-weight: bold; font-size: 25px;"> Surveys </h4>
+        <table class="table table-hover mt-5">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Zip</th>
+                    <th>Province</th>
+                    <th>Country</th>
+                    <th>CoronaAffected</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let survey of surveys">
+                    <td>{{survey._id}}</td>
+                    <td>{{survey.name}}</td>
+                    <td>{{survey.email}}</td>
+                    <td>{{survey.gender}}</td>
+                    <td>{{survey.age}}</td>
+                    <td>{{survey.address}}</td>
+                    <td>{{survey.city}}</td>
+                    <td>{{survey.zip}}</td>
+                    <td>{{survey.province}}</td>
+                    <td>{{survey.country}}</td>
+                    <td>{{survey.coronaAffected}}</td>
+                    <td>
+                        <a class="btn border-shadow" (click)="doUpdate(survey)">
+                            <span class="text-gradient"><i class="fa-solid fa-pen-to-square"></i></span>
+                        </a>
+                        <a class="btn border-shadow" (click)="doDelete(survey)" >
+                            <span class="text-gradient"><i class="fa-solid fa-trash"></i></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
