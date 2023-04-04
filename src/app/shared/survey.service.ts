@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Survey } from '../survey';
 
@@ -10,6 +10,7 @@ export class SurveyService {
   private survey!:Survey;
   private baseuri:string="http://localhost:8080";
   private headers = new HttpHeaders().set('Content-Type', 'application/json');
+  static authEmitter = new EventEmitter<boolean>();
   constructor(private http:HttpClient) {
 
    }
@@ -19,11 +20,10 @@ export class SurveyService {
   }
 
   readSurveys(){
-    return this.http.get(this.baseuri+'/read', {headers: this.headers});
+    return this.http.get(this.baseuri+'/read', {headers: this.headers, withCredentials: true});
   }
 
   updateSurvey(id:string,body:any){
-    console.log('gggggg');
     return this.http.put(this.baseuri+'/update/'+id,body, {headers: this.headers});
   }
 

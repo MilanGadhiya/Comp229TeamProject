@@ -33,7 +33,6 @@ router.post('/create', async (req, res, next) => {
 
 
 router.put('/update/:id', async (req, res, next) => {
-
     try {
         const id = req.params.id;
         console.log("params ============ ",req.params);
@@ -43,22 +42,11 @@ router.put('/update/:id', async (req, res, next) => {
             return next(new Error('Could not load the document'));
         } else {
            
-            console.log('inside....',req.body);
-            // survey.name = req.body.name,
-            // survey.email = req.body.email,
-            // survey.gender = req.body.gender,
-            // survey.age = req.body.age,
-            // survey.address = req.body.address,
-            // survey.city = req.body.city,
-            // survey.zip = req.body.zip,
-            // survey.province = req.body.province,
-            // survey.country = req.body.country,
-            // survey.coronaAffected = req.body.coronaAffected
-
-            survey = await Survey.findByIdAndUpdate(id,req.body);
+            //console.log('inside....',req.body);
             // const result = await survey.save();
             // console.log(result);
 
+            survey = await Survey.findByIdAndUpdate(id,req.body);
             res.send({message:"updated",survey})
         }
     }
@@ -75,7 +63,7 @@ router.delete('/delete/:id', (req, res, next) => {
             res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
         }else{
             res.send({
-                message : "Survey was deleted successfully!"
+                message : "Survey deleted successfully!"
             })
         }
     })
@@ -85,5 +73,27 @@ router.delete('/delete/:id', (req, res, next) => {
         });
     });
 });
+
+
+router.login = (req, res, next)=>{
+    const user = new User({
+        email: req.body.email,
+        password: req.body.password
+    });
+    req.login(user, (err)=>{
+        if(err){
+            console.log(err)
+        }else{
+            passport.authenticate('local', function(err, user, info) {
+                if (err) { return next(err); }
+                if (!req.user) { return res.redirect('/login'); }
+                req.logIn(req.user, function(err) {
+                  if (err) { return next(err); }
+                  return res.redirect('/contactlist');
+                });
+              })(req, res, next);
+        }
+    });
+};
 
 module.exports = router;
