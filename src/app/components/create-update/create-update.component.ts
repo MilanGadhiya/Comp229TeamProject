@@ -23,7 +23,7 @@ export class CreateUpdateComponent implements OnInit {
       this.surveyService.createSurvey(this.survey)
       .subscribe(
         data => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/listSurvey']);
         },
         error => {
           console.log(error);
@@ -34,7 +34,7 @@ export class CreateUpdateComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this.router.navigate(['/']);
+          this.router.navigate(['/listSurvey']);
         },
         error => {
           console.log(error);
@@ -42,5 +42,4 @@ export class CreateUpdateComponent implements OnInit {
       )
     }
   }
-
 }
