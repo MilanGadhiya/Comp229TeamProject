@@ -9,11 +9,16 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { CreateUpdateComponent } from './components/create-update/create-update.component';
 import { ListSurveyComponent } from './components/list-survey/list-survey.component';
 import { SurveyService } from './shared/survey.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes:Routes=[
-  {path:'', component:ListSurveyComponent},
-  {path:'createUpdate', component:CreateUpdateComponent}
+  {path:'', component:LoginComponent},
+  {path:'listSurvey', component:ListSurveyComponent},
+  {path:'createUpdate', component:CreateUpdateComponent},
+  {path:'register', component:RegisterComponent},
+  {path:'login', component:LoginComponent}
 ]
 @NgModule({
   declarations: [
@@ -21,13 +26,16 @@ const appRoutes:Routes=[
     HeaderComponent,
     FooterComponent,
     CreateUpdateComponent,
-    ListSurveyComponent
+    ListSurveyComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [SurveyService],

@@ -1,21 +1,40 @@
 <header>
     <!-- Navbar -->
     <nav class="navbar  navbar-dark bg-dark navbar-expand-lg fixed-top">
-      <a class="navbar-brand" href="/home">
+      <a class="navbar-brand" href="/">
         <img src="../../../assets/images/logo1.png" class="d-inline-block align-top" width="90" height="60" alt="">
       </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav" *ngIf="!authenticated">
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="/listSurvey">Home <span class="sr-only">(current)</span></a>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="/createUpdate" (click)="newSurvey($event)">New Survey</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/register" (click)="register($event)">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login" (click)="login($event)">Login</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav" *ngIf="authenticated">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/listSurvey">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/createUpdate" (click)="newSurvey($event)">New Survey</a>
             </li>
+            <li class="nav-item">
+              <a  routerLink="/login" class="nav-link" (click)="logout()">Logout</a>
+            </li>
           </ul>
+
         </div>
       </nav>
     <!-- Navbar -->

@@ -19,13 +19,11 @@ export class CreateUpdateComponent implements OnInit {
   }
 
   createOrUpdate() {
-    console.log('mmmmmmmmmmmm');
     if(this.survey._id == undefined) {
       this.surveyService.createSurvey(this.survey)
       .subscribe(
         data => {
-          console.log('yyyyyyyyyyyy');
-          this.router.navigate(['/']);
+          this.router.navigate(['/listSurvey']);
         },
         error => {
           console.log(error);
@@ -35,9 +33,8 @@ export class CreateUpdateComponent implements OnInit {
       this.surveyService.updateSurvey(this.survey._id,this.survey)
       .subscribe(
         data => {
-          console.log("dssssdsd");
           console.log(data);
-          this.router.navigate(['/']);
+          this.router.navigate(['/listSurvey']);
         },
         error => {
           console.log(error);
@@ -45,5 +42,4 @@ export class CreateUpdateComponent implements OnInit {
       )
     }
   }
-
 }

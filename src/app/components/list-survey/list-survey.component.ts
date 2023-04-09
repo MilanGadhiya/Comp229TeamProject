@@ -25,8 +25,12 @@ export class ListSurveyComponent implements OnInit {
         next: (data:any) => {
           this.surveys = data;
           console.log(data);
+          SurveyService.authEmitter.emit(true);
         },
-        error: (e) => console.error(e)
+        error: (e) =>{
+          console.error(e);
+          SurveyService.authEmitter.emit(false);
+        }
       });
   }
 
