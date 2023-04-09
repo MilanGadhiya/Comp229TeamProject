@@ -14,7 +14,6 @@ export class SurveyService {
   constructor(private http:HttpClient) {
 
    }
-
   createSurvey(survey:Survey){
     return this.http.post(this.baseuri+'/create', survey, {headers: this.headers});
   }
