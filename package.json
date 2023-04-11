@@ -53,5 +53,8 @@
   "bugs": {
     "url": "https://github.com/MilanGadhiya/Comp229TeamProject/issues"
   },
+  "engines": {
+    "node": ">=14 <18"
+  },
   "homepage": "https://github.com/MilanGadhiya/Comp229TeamProject#readme"
 }
